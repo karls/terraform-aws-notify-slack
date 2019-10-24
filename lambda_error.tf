@@ -8,7 +8,7 @@ resource "aws_cloudwatch_metric_alarm" "lambda_error" {
   alarm_name = "${var.lambda_function_name} Failed"
   metric_name = "Errors"
   namespace = "AWS/Lambda"
-  dimensions {
+  dimensions = {
     FunctionName = "${aws_lambda_function.notify_slack.function_name}"
   }
   comparison_operator = "GreaterThanOrEqualToThreshold"
