@@ -61,7 +61,7 @@ resource "aws_lambda_function" "notify_slack" {
 
   function_name = "${var.lambda_function_name}"
 
-  role             = "${aws_iam_role.lambda.arn[count.index]}"
+  role             = "${aws_iam_role.lambda[count.index].arn}"
   handler          = "notify_slack.lambda_handler"
   source_code_hash = "${data.archive_file.notify_slack.0.output_base64sha256}"
   runtime          = "python3.6"
